@@ -1,12 +1,16 @@
 require('dotenv').config();
 const express = require("express"); 
 const cors = require("cors");
-const db = require("./db"); //will automatically look for index.js
+const db = require("."); //will automatically look for index.js
 
 const app = express();
 
 app.use(cors());
 app.use(express.json()); //this is a middleware that allows req.body to work. it takes the body of the request and gives it to us in json format
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, "client/build")));
+}
 
 //GET ALL RESTAURANTS
 app.get("/api/v1/restaurants", async (req, res) => {
