@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require("express"); 
 const cors = require("cors");
 const db = require("."); //will automatically look for index.js
+const path = require("path");
 
 const app = express();
 
