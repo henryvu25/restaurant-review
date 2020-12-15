@@ -13,13 +13,13 @@ const AddReview = () => {
     const handleSubmitReview = async (e) => {
         e.preventDefault();
         try {
-            const response = await RestaurantFinder.post(`/${id}/addReview`, {
+            await RestaurantFinder.post(`/${id}/addReview`, {
                 name,
                 review: reviewText,
                 rating
             });
-            history.push("/");
-            history.push(location.pathname);
+            history.push("/")
+            history.push(location.pathname)
         } catch (err) {
             console.error(err.message)
         }
@@ -36,6 +36,7 @@ const AddReview = () => {
                     <div className="form-goup col-4">
                         <label htmlFor="rating">Rating</label>
                         <select value={rating} onChange={e => setRating(e.target.value)} id="rating" className="custom-select">
+                            <option value="">Choose Below</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
