@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState  } from 'react'
 import RestaurantFinder from '../apis/RestaurantFinder';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
 
 const AddReview = () => {
     const { id } = useParams(); //grabs the specific param from the url
     const location = useLocation();
-
+    const history = useHistory()
     const [name, setName] = useState('');
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState('Rating');
@@ -18,7 +18,8 @@ const AddReview = () => {
                 review: reviewText,
                 rating
             });
-            window.location = location.pathname;
+            history.push("/");
+            history.push(location.pathname);
         } catch (err) {
             console.error(err.message)
         }
